@@ -11,6 +11,8 @@ from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
 
+import ssl
+
 
 def create_app(db_url=None):
     app = Flask(__name__)
@@ -30,6 +32,15 @@ def create_app(db_url=None):
     api = Api(app)
 
     app.config["JWT_SECRET_KEY"] = "jose"
+    app.config["JWT_ALGORITHM"] = "RS256"
+    app.config["JWT_PUBLIC_KEY"] = open('public_key.pem').read()
+    app.config["JWT_PRIVATE_KEY"] = open('private_key.pem').read()
+
+    context = ssl.create_default_context()
+    context.set_ecdh_curve('prime256v1')
+    context.set_ciphers('ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384')
+    context.load_cert_chain(certfile='cert.pem', keyfile='key.pem')
+
     jwt = JWTManager(app)
 
     # @jwt.additional_claims_loader
