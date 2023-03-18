@@ -16,5 +16,5 @@ COPY . .
 
 RUN openssl genrsa -out private_key.pem 2048
 RUN openssl rsa -in private_key.pem -outform PEM -pubout -out public_key.pem
-RUN openssl req -new -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out crt.pem -subj "/CN=localhost"
+RUN openssl req -new -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=localhost"
 CMD ["/bin/bash", "docker-entrypoint.sh"]
