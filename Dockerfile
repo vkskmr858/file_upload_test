@@ -11,7 +11,9 @@ RUN apt-get update && \
 WORKDIR /app
 COPY ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+COPY . .
+
 RUN openssl genrsa -out private_key.pem 2048
 RUN openssl rsa -in private_key.pem -outform PEM -pubout -out public_key.pem
-COPY . .
 CMD ["/bin/bash", "docker-entrypoint.sh"]
