@@ -25,7 +25,7 @@ class UploadFile(MethodView):
     @jwt_required()
     @blp.response(201, FilesSchema)
     def post(self):
-        """This method is to upload Aadhar files to the database"""
+        """This method is to files to the database"""
         file = request.files['file']
 
         if not file:
@@ -77,7 +77,7 @@ class UploadFile(MethodView):
 class GetFile(MethodView):
     @jwt_required()
     def get(self,id):
-        """This method returns the Aadhaar file corresponding to the id"""
+        """This method returns the file corresponding to the id"""
 
         img = FilesModel.query.filter_by(id=id).first()
         if not img:
