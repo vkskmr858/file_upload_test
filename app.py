@@ -165,8 +165,8 @@ def require_api_key(view_function):
 
 
 @app.route("/register", methods=["POST"])
-@limiter.limit("3/hour")
-@require_api_key
+#@limiter.limit("3/hour")
+#@require_api_key
 def UserRegister():
     print(request.get_json())
     user_data = request.get_json()
