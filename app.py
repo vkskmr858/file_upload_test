@@ -197,7 +197,7 @@ def UserRegister():
 
 
 @app.route("/login", methods=["POST"])
-@limiter.limit("1/minute")
+#@limiter.limit("1/minute")
 def login():
 
     client_ip = request.remote_addr
