@@ -1,3 +1,4 @@
+flask
 Flask-JWT-Extended
 Flask-Smorest
 Flask-SQLAlchemy
@@ -5,6 +6,9 @@ passlib
 marshmallow
 python-dotenv
 gunicorn
-Flask-Migrate
+flask-migrate
 PyJWT
 cryptography
+password-strength
+flask_limiter
+filetype
