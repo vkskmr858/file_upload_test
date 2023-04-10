@@ -26,6 +26,8 @@ class UploadFile(MethodView):
     #@blp.response(201, FilesSchema)
     def post(self):
         """This method is to files to the database"""
+        logging.info('printing file details')
+        logging.info(request.files['file'])
         file = request.files['file']
 
         if not file:
