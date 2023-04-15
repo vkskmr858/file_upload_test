@@ -38,9 +38,10 @@ from password_strength import PasswordPolicy
 from password_strength import PasswordStats
 
 from functools import wraps
-from config import API_KEY
+from config import *
 
 import logging
+import psycopg2
 
 policy = PasswordPolicy.from_names(
 length=8,  # min length: 8
@@ -59,7 +60,7 @@ app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
 app.config[
     "OPENAPI_SWAGGER_UI_URL"
 ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-app.config["SQLALCHEMY_DATABASE_URI"] = DB_CRED
+app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://%(user)s:%(password)s@%(host)s:%(port)s/%(dbname)s' % POSTGRES
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["PROPAGATE_EXCEPTIONS"] = True
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1000 * 1000
