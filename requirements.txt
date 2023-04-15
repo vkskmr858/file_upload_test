@@ -12,3 +12,4 @@ cryptography
 password-strength
 flask_limiter
 filetype
+psycopg2
