@@ -23,7 +23,7 @@ class Home(MethodView):
 @blp.route('/upload')
 class UploadFile(MethodView):
     @jwt_required()
-    #@blp.response(201, FilesSchema)
+    @blp.response(201, FilesSchema)
     def post(self):
         """This method is to files to the database"""
         file = request.files['file']
